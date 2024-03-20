@@ -1,10 +1,23 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from './home';
+import Game from './game';
 import './index.css'
+import { io } from 'socket.io-client';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+export const socket = io("http://localhost:3000");
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />
+    },
+    {
+        path: "/game",
+        element: <Game />,
+    },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+    <RouterProvider router={router} />
+);

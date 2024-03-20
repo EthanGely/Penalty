@@ -1,0 +1,426 @@
+#root {
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    #root {
+        h1 {
+            font-size: 25px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        h3 {
+            font-size: 17px;
+        }
+    }
+}
+
+.game {
+    min-width: 100%;
+    min-height: 85vh;
+
+    .goal {
+        max-width: 70%;
+        max-height: 35vh;
+        margin: 0 auto;
+        background: #000;
+        border: 15px solid #fff;
+        border-bottom: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        position: relative;
+        aspect-ratio: 3/1;
+
+        @media (max-width: 768px) {
+            border: 5px solid #fff;
+            border-bottom: 0;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #454444 2px, transparent 1px),
+                linear-gradient(90deg, #212121 2px, transparent 1px);
+            background-size: 40px 25px;
+            z-index: 0;
+
+            @media screen and (max-width: 768px) {
+                background-size: 35px 20px;
+            }
+        }
+
+        .goalkeeper {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: auto;
+            z-index: 2;
+            vertical-align: bottom;
+            transition: all .3s;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+            &.pos0 {
+                left: 18%;
+            }
+
+            &.pos2 {
+                left: 84%;
+            }
+        }
+
+        .shoots {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .shoot {
+                border-radius: 100%;
+                border: 2px dashed #ffffff;
+                background: #ffffff47;
+                width: 50px;
+                height: 50px;
+                transition: all .3s;
+                z-index: 2;
+                animation: rotate 20s linear infinite;
+
+                @media (max-width: 768px) {
+                    width: 40px;
+                    height: 40px;
+                }
+
+                &:hover {
+                    border-style: solid;
+                    background: #ffffffcb;
+                    cursor: pointer;
+                }
+
+                &.invisible {
+                    opacity: 0;
+                }
+
+                &.shooted {
+                    animation: none;
+                    border-style: solid;
+                    border-color: rgb(255, 157, 0);
+                    background-color: rgba(255, 157, 0, 0.521);
+                }
+            }
+        }
+    }
+
+    .ball {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        margin: 0 auto;
+        z-index: 3;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 300%);
+
+        @media (max-width: 768px) {
+            width: 60px;
+            height: 60px;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        &.pos0:not(.missed) {
+            animation: pos0 1s linear 1 forwards;
+        }
+
+        &.pos0.missed {
+            animation: pos0Missed 1s linear 1 forwards;
+        }
+
+        &.pos1:not(.missed) {
+            animation: pos1 1s linear 1 forwards;
+        }
+
+        &.pos1.missed {
+            animation: pos1Missed 1s linear 1 forwards;
+        }
+
+        &.pos2:not(.missed) {
+            animation: pos2 1s linear 1 forwards;
+        }
+
+        &.pos2.missed {
+            animation: pos2Missed 1s linear 1 forwards;
+        }
+    }
+}
+
+@keyframes pos0 {
+    0% {
+        width: 70px;
+        height: 70px;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 300%);
+
+        @media (max-width: 768px) {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    100% {
+        width: 55px;
+        height: 55px;
+        left: 17%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+@keyframes pos0Missed {
+    0% {
+        width: 70px;
+        height: 70px;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 300%);
+
+        @media (max-width: 768px) {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    75% {
+        width: 55px;
+        height: 55px;
+        left: 17%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    80% {
+        width: 55px;
+        height: 55px;
+        left: 17%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    100% {
+        width: 55px;
+        height: 55px;
+        left: 17%;
+        top: 100%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+
+@keyframes pos1 {
+    0% {
+        width: 70px;
+        height: 70px;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 300%);
+
+        @media (max-width: 768px) {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    100% {
+        width: 55px;
+        height: 55px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+@keyframes pos1Missed {
+    0% {
+        width: 70px;
+        height: 70px;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 300%);
+
+        @media (max-width: 768px) {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    75% {
+        width: 55px;
+        height: 55px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    80% {
+        width: 55px;
+        height: 55px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    100% {
+        width: 55px;
+        height: 55px;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+@keyframes pos2 {
+    0% {
+        width: 70px;
+        height: 70px;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 300%);
+
+        @media (max-width: 768px) {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    100% {
+        width: 55px;
+        height: 55px;
+        left: 84%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+@keyframes pos2Missed {
+    0% {
+        width: 70px;
+        height: 70px;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 300%);
+
+        @media (max-width: 768px) {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    75% {
+        width: 55px;
+        height: 55px;
+        left: 84%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    80% {
+        width: 55px;
+        height: 55px;
+        left: 84%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    100% {
+        width: 55px;
+        height: 55px;
+        left: 84%;
+        top: 100%;
+        transform: translate(-50%, -50%) rotate(720deg);
+
+        @media (max-width: 768px) {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

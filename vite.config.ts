@@ -14,8 +14,8 @@ export default defineConfig({
         "display": "standalone",
         "scope": "/",
         "start_url": "/",
-        "name": "simon",
-        "short_name": "simon",
+        "name": "Penalty Shootout",
+        "short_name": "Penalty Shootout",
         "icons": [
           {
             "src": "/icon-192x192.png",
