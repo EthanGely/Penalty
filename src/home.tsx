@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import './App.scss';
 import { socket } from './main';
 import { useNavigate } from "react-router-dom";
+import logo from './assets/logo.jpg'
 
 function Home() {
 
@@ -28,6 +29,15 @@ function Home() {
 
   return (
     <>
+      <nav>
+        <div className="logo">
+          <img src={logo} />
+        </div>
+        <a href="/">Home</a>
+        <a href="https://simon-pwa-sigma.vercel.app/" className='external' target='_blank'>Simon game</a>
+        <a href="http://82.66.255.189/webSockets/theMind/" className='external' target='_blank'>The Mind</a>
+        <a href="http://82.66.255.189/" className='external' target='_blank'>Mind Guardians</a>
+      </nav>
       <h1>Penalty game</h1>
       <div className="w50">
         <label htmlFor="playerName">Player name</label>
@@ -47,6 +57,8 @@ function Home() {
           {isWaiting ? "Waiting for player" : "Find a match"}
         </button>
       </div>
+
+      <div className="car"></div>
     </>
   )
 }

@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from './home';
 import Game from './game';
-import './index.css'
+import './index.scss'
 import { io } from 'socket.io-client';
 
 export const socket = io("https://serverpenalty.onrender.com");

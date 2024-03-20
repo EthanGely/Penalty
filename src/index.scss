@@ -1,0 +1,143 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  padding-top: 0;
+  min-height: 100vh;
+}
+
+html * {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover,
+button:focus {
+  border-color: #646cff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #c8cbfa;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+input {
+  border-radius: 5px;
+  transition: all 0.3s;
+
+  &:hover,
+  &:focus {
+    border-color: #646cff;
+  }
+}
+
+nav {
+  width: 100vw;
+  left: calc(50% - 50vw);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  align-items: center;
+  font-size: 20px;
+  padding: 25px 100px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  
+  .logo {
+    width: 125px;
+    height: 75px;
+    border-radius: 20px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    transition: all .3s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      border-radius: 20px;
+      background-color: #fff;
+      transition: all .3s;
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        width: 25%;
+      }
+    }
+  }
+}
+
+
+a.external {
+  position: relative;
+  &::after {
+    content: "↗";
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    width: calc(100% + 20px);
+  }
+}

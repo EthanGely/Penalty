@@ -12,7 +12,7 @@ function Game() {
     // Status du joueur (gardien ou tireur)
     const [isGoalKeeper, setIsGoalKeeper] = useState(false);
     // Score de la manche en cours
-    const [score, setScore] = useState("You : 0 - 0 : opponent");
+    const [score, setScore] = useState("");
     // Nombre de tirs de la manche en cours
     const [shoots, setShoots] = useState("Shoot 0/5");
     // Numéro de la manche en cours
