@@ -5,7 +5,7 @@ import Game from './game';
 import './index.css'
 import { io } from 'socket.io-client';
 
-export const socket = io("https://serverpenalty.onrender.com:3000");
+export const socket = io("https://serverpenalty.onrender.com");
 
 const router = createBrowserRouter([
     {
