@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { SparklesCore } from "./ui/sparkles";
 import cup from '../assets/cup.png';
 
