@@ -7,6 +7,19 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 let previousButton = 0;
 
+let hasNotificationPermission = false;
+if ("Notification" in window) {
+    if (Notification.permission === "granted") {
+        hasNotificationPermission = true;
+    } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then((permission) => {
+            if (permission === "granted") {
+                hasNotificationPermission = true;
+            }
+        });
+    }
+}
+
 function Game() {
 
     // Status du joueur (gardien ou tireur)
@@ -123,17 +136,6 @@ function Game() {
         socket.on("gamePadID", (id) => {
             console.log("Gamepad ID received : ", id);
             setIdController(id);
-
-            setTimeout(() => {
-                if (id == -1) {
-                    navigator.getGamepads().forEach((gamepad) => {
-                        if (gamepad) {
-                            socket.emit("gamePad", gamepad.index, ip);
-                        }
-                    }
-                    )
-                }
-            }, 1000);
         });
 
         return () => {
@@ -176,6 +178,21 @@ function Game() {
 
         });
 
+        socket.off("endGame");
+        socket.on("endGame", (status) => {
+            const message = status ? "You won !!!" : "You lost :(";
+            const title = status ? "WINNER" : "LOOSER";
+            if (hasNotificationPermission) {
+                new Notification(title, { body: message });
+            } else {
+                alert(title + "<\n" + message);
+            }
+
+            setTimeout(() => {
+                navigate(status ? "/winner" : "/looser");
+            }, 2000);
+        });
+
         // redirect (to home page)
         socket.off('location');
         socket.on('location', (location) => {
@@ -199,11 +216,11 @@ function Game() {
                 setIndexBall(shootIndex);
 
                 if (shootIndex == indexGoalKeeper && isGoalKeeper) {
-                    navigator.vibrate(100);
+                    navigator.vibrate([200, 150, 200]);
                 } else if (shootIndex != indexGoalKeeper && !isGoalKeeper) {
-                    navigator.vibrate(100);
+                    navigator.vibrate([200, 150, 200]);
                 } else {
-                    navigator.vibrate(250);
+                    navigator.vibrate(350);
                 }
             }
 

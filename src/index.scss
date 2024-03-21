@@ -13,6 +13,53 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body, #root {
+  width: 100%;
+  height: 100%;
+}
+
+.button a {
+  display: inline-block;
+  padding: 1em 2em;
+  margin-top: 4em;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #3b4096; // Changed background color to light gray
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .3s;
+
+  &:hover,
+  &:focus {
+    border-color: #646cff;
+    background-color: #1a1a1a;
+  }
+}
+
+.iLoveSparkles {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  & > div {
+    width: 100%;
+    height: 100%;
+
+    & > div {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.cup {
+  max-height: 50vh;
+}
+
 #root {
   padding-top: 0;
   min-height: 100vh;
