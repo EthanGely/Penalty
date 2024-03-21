@@ -85,6 +85,10 @@ nav {
   font-size: 20px;
   padding: 25px 100px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   
   .logo {
     width: 125px;
